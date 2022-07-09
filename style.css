@@ -1,3 +1,4 @@
+/* stylelint-disable number-max-precision */
 * {
   margin: 0;
   padding: 0;
@@ -38,4 +39,12 @@
 .reallybig {
   font-size: 40px;
   padding: 15px;
+}
+
+.rotateleft {
+  transform: matrix(0.996195, -0.0871557, 0.0871557, 0.996195, 0, 0);
+}
+
+.rotateright {
+  transform: matrix(0.996195, 0.0871557, -0.0871557, 0.996195, 0, 0);
 }
