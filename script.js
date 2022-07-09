@@ -5,8 +5,9 @@ function criaCarta() {
   const textoCarta = document.getElementById('carta-texto').value.trim();
   const cartaGerada = document.getElementById('carta-gerada');
   if (textoCarta === '') {
-    cartaGerada.innerText = 'Por favor, digite o conteúdo da carta';
+    cartaGerada.innerText = 'Por favor, digite o conteúdo da carta.';
   } else {
+    cartaGerada.innerText = '';
     const arrayPalavras = textoCarta.split(' ');
     for (let index = 0; index < arrayPalavras.length; index += 1) {
       const spanPalavra = document.createElement('span');
