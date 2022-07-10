@@ -1,5 +1,5 @@
 const botaoCriaCarta = document.getElementById('criar-carta');
-
+const contadorPalavras = document.getElementById('carta-contador');
 function pegarAleatorio(lista) {
   return lista[Math.floor(Math.random() * lista.length)];
 }
@@ -8,7 +8,16 @@ const grupoTamanho = ['medium', 'big', 'reallybig'];
 const rotacao = ['rotateleft', 'rotateright'];
 const inclinacao = ['skewleft', 'skewright'];
 
-// eslint-disable-next-line max-lines-per-function
+function aplicarAleatorio(event) {
+  const evento = event;
+  evento.target.className = ''; // reset de classes
+  const estiloAlt = pegarAleatorio(grupoEstilo);
+  const tamanhoAlt = pegarAleatorio(grupoTamanho);
+  const rotacaoAlt = pegarAleatorio(rotacao);
+  const inclinacaoAlt = pegarAleatorio(inclinacao);
+  evento.target.classList.add(estiloAlt, tamanhoAlt, rotacaoAlt, inclinacaoAlt);
+}
+
 function criaCarta() {
   const textoCarta = document.getElementById('carta-texto').value.trim();
   const cartaGerada = document.getElementById('carta-gerada');
@@ -23,8 +32,10 @@ function criaCarta() {
       spanPalavra.classList.add(pegarAleatorio(grupoEstilo), pegarAleatorio(grupoTamanho));
       spanPalavra.classList.add(pegarAleatorio(rotacao), pegarAleatorio(inclinacao));
       spanPalavra.innerText = `${arrayPalavras[index]}`;
+      spanPalavra.addEventListener('click', aplicarAleatorio);
       cartaGerada.appendChild(spanPalavra);
     }
+    contadorPalavras.innerText = arrayPalavras.length;
   }
 }
 
