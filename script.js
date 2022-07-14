@@ -1,12 +1,15 @@
 const botaoCriaCarta = document.getElementById('criar-carta');
 const contadorPalavras = document.getElementById('carta-contador');
-function pegarAleatorio(lista) {
-  return lista[Math.floor(Math.random() * lista.length)];
-}
+const cartaGerada = document.getElementById('carta-gerada');
+const rotuloContador = document.getElementById('rotulo-contador');
 const grupoEstilo = ['newspaper', 'magazine1', 'magazine2'];
 const grupoTamanho = ['medium', 'big', 'reallybig'];
 const rotacao = ['rotateleft', 'rotateright'];
 const inclinacao = ['skewleft', 'skewright'];
+
+function pegarAleatorio(lista) {
+  return lista[Math.floor(Math.random() * lista.length)];
+}
 
 function aplicarAleatorio(event) {
   const evento = event;
@@ -20,7 +23,6 @@ function aplicarAleatorio(event) {
 
 function criaCarta() {
   const textoCarta = document.getElementById('carta-texto').value.trim();
-  const cartaGerada = document.getElementById('carta-gerada');
   if (textoCarta === '') {
     cartaGerada.innerText = 'Por favor, digite o conteúdo da carta.';
   } else {
@@ -35,6 +37,7 @@ function criaCarta() {
       spanPalavra.addEventListener('click', aplicarAleatorio);
       cartaGerada.appendChild(spanPalavra);
     }
+    rotuloContador.style.display = 'block';
     contadorPalavras.innerText = arrayPalavras.length;
   }
 }
